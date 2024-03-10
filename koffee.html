@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Machine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1 {
+            text-align: center;
+        }
+        .coffee-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .coffee-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .coffee-button:hover {
+            background-color: #45a049;
+        }
+        .coffee-options {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .coffee-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .coffee-option label {
+            margin-bottom: 5px;
+        }
+        .coffee-image {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .coffee-image img {
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+        .loading-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Coffee Machine</h1>
+        <div class="coffee-buttons">
+            <button class="coffee-button" onclick="selectCoffee('Espresso')">Espresso</button>
+            <button class="coffee-button" onclick="selectCoffee('Latte')">Latte</button>
+            <button class="coffee-button" onclick="selectCoffee('Cappuccino')">Cappuccino</button>
+        </div>
+        <div class="coffee-options">
+            <div class="coffee-option">
+                <label for="strength">Strength:</label>
+                <select id="strength">
+                    <option value="strong">Strong</option>
+                    <option value="medium">Medium</option>
+                    <option value="mild">Mild</option>
+                </select>
+            </div>
+            <div class="coffee-option">
+                <label for="size">Size:</label>
+                <select id="size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+        </div>
+        <div class="coffee-image" id="coffee-image">
+            <img src="" alt="Coffee" id="coffee-img">
+        </div>
+        <div class="loading-icon" id="loading-icon">
+            <img src="https://gifdb.com/images/high/process-of-producing-high-quality-animated-coffee-o8crqii170khm5mw.gif" alt="Loading">
+        </div>
+    </div>
+
+    <script>
+        function selectCoffee(type) {
+            const strength = document.getElementById('strength').value;
+            const size = document.getElementById('size').value;
+            const message = `Making ${strength} ${size} ${type}... Enjoy your coffee!`;
+            document.getElementById('loading-icon').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('loading-icon').style.display = 'none';
+                document.getElementById('coffee-img').style.display = 'block';
+                document.getElementById('coffee-img').src = 'https://img.freepik.com/free-vector/coffee-cup-tan-colour_78370-3051.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1709942400&semt=ais';
+                alert(message);
+            }, 2000); // Simulating coffee brewing time (2 seconds)
+        }
+    </script>
+</body>
+</html>
